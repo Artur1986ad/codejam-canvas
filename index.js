@@ -1,30 +1,43 @@
 
 
 let canvas = document.getElementById('canvas');
-
 let ctx = canvas.getContext('2d');
-
 let data4x4;
-
-fetch("https://raw.githubusercontent.com/Dziazhurny/codejam-canvas/master/assets/data/4x4.json")
-    .then(function(resp){
+let data32x32 =[];
+let url4 = "https://raw.githubusercontent.com/Dziazhurny/codejam-canvas/master/assets/data/4x4.json";
+let url32 = "https://raw.githubusercontent.com/Dziazhurny/codejam-canvas/master/assets/data/32x32.json";
+function fetchData(linkUrl, dataArray)
+    {
+            fetch(linkUrl).then(function(resp){
         return resp.json();
-    })
-    .then(function(data){
-        data4x4=data;
-    });
-
-let data32x32;
-
-fetch("https://raw.githubusercontent.com/Dziazhurny/codejam-canvas/master/assets/data/32x32.json")
-    .then(function(resp){
-        return resp.json();
-    })
-    .then(function(data){
-        data32x32=data;
-    });
-
-
+    }).then(function(data){
+        if(data.length === 4)
+        {
+            data4x4 =data;
+        }else{
+            data32x32 = data;
+        }
+    });      
+}
+(function(){
+ var rad = document.formCheck.visible;
+    var prev = null;
+    for(var i = 0; i < rad.length; i++) {
+        rad[i].addEventListener('change', function() {
+            this.value
+            if(this.value === "1"){
+                fetchData(url4,data4x4);
+                setTimeout(firstCanvas, 100);
+            } else if(this.value === "2")
+            {   fetchData(url32,data32x32);
+                setTimeout(secondCanvas, 100);}
+            else if(this.value === "3")
+            {
+                thirdCanvas();
+            }
+        });
+    }
+})();
 function firstCanvas() {
     for (let i=0; i<data4x4.length; i++){
         for (let j=0; j<data4x4[0].length; j++){
@@ -43,7 +56,6 @@ function secondCanvas() {
     }
 }
 
-
 function thirdCanvas() {
     pic = new Image();
     pic.src = 'assets/image.png'; 
@@ -52,6 +64,3 @@ function thirdCanvas() {
     }
 }
 
-window.onload = function() {
-    firstCanvas();
- };

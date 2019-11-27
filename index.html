@@ -5,45 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css">    
+    <link rel="stylesheet" href="style.css">  
+    <link rel="stylesheet" href="clean_style.css">  
     <title>CodeJam Canvas</title>
 </head>
 <body>
     <header class="header">
-        <a class="header__menu" href="#">
+        <div class="header__menu" href="#">
             <span class="header__menu_item">Menu</span>                
-        </a>
+        </div>
         <h1 class="header__title">CodeJam - Pallete</h1>         
-        <a class="header__extra-options" href="#">
+        <div class="header__extra-options" href="#">
             <span class="header__extra-options_item">Extra options</span>
-        </a>
+        </div>
     </header>
     <main class="main-content">
         <ul class="tool switcher">
-            <li class="tool-item">Paint bucket</li>
-            <li class="tool-item">Choose color</li>
-            <li class="tool-item">Move</li>
-            <li class="tool-item">Transform</li>
+            <li class="tool-item tool_item-painter"><img class="tool_image" src="assets/icon-share-1.svg">Paint bucket</li>
+            <li class="tool-item tool_item-choose"><img class="tool_image" src="assets/icon-upload.svg">Choose color</li>
+            <li class="tool-item tool_item-move"><img class="tool_image" src="assets/icon-copy.svg">Move</li>
+            <li class="tool-item tool_item-transform"><img class="tool_image" src="assets/icon-share.svg">Transform</li>
         </ul>        
         <ul class="color switcher">
-            <li class="color-item">Current color</li>
-            <li class="color-item">Prev color</li>
-            <li class="color-item">red</li>
-            <li class="color-item">blue</li>
+            <li class="color-item color_item-currnt">Current color</li>
+            <li class="color-item color_item-prev">Prev color</li>
+            <li class="color-item color_item-red">red</li>
+            <li class="color-item color_item-blue">blue</li>
         </ul>
-        <form class="size switcher">
-            <label>                            
-                <input class="size-input" type="radio" name="radio1" checked="checked" OnClick="firstCanvas();">           
-                <span class="size-input-text" >4x4</span>
-            </label>
-            <label>
-                <input class="size-input" type="radio" name="radio1" OnClick="secondCanvas();">
-                <span class="size-input-text">32x32</label>          
-            </label>
-            <label>
-                <input class="size-input" type="radio" name="radio1" OnClick="thirdCanvas();">
-                <span class="size-input-text">512x512</label>                 
-            </label>           
+        <form name="formCheck" class="size switcher">
+            <div><input type="radio" name="visible" value="1" class="checkbox_visible"/><b>4x4</b></div>
+            <div><input type="radio" name="visible" value="2" class="checkbox_visible"/><b>32x32</b></div>
+            <div><input type="radio" name="visible" value="3" class="checkbox_visible"/><b>512x512</b></div>     
         </form>
         <canvas id="canvas" width="512" height="512"></canvas>   
     </main>    
